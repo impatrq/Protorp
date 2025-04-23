@@ -5,12 +5,15 @@ PROTORP 🚆
 ![protorp pero esta vez sin png](https://github.com/user-attachments/assets/6bc01a5a-dcdb-4b18-a9ab-d036a78cd103)
 
 🌟 Objetivo del Proyecto
+
 PROTORP tiene como objetivo principal desarrollar sistemas de seguridad ferroviaria , como ATP (Automatic Train Protection) y ATS (Automatic Train Stop), a escala, para mejorar la eficiencia, seguridad y capacitación en el ámbito ferroviario.
 
 💡 ¿De dónde surgió la idea?
+
 La idea de PROTORP nació de la necesidad de mejorar la seguridad y eficiencia en los sistemas ferroviarios. Inspirados por los desafíos actuales en el transporte, buscamos crear un modelo a escala que permita probar y validar tecnologías avanzadas antes de su implementación en sistemas reales.
 
 🛠️ Descripción del Proyecto
+
 Nuestro proyecto incluye:
 - Sistema ATS: Detiene automáticamente el tren si se salta una señal de advertencia.
 - Sistema ATP: Controla la velocidad y la distancia entre trenes para evitar colisiones.
@@ -31,9 +34,11 @@ Nuestro proyecto incluye:
 
 👥 Equipo
 Fernando Joaquin Gonzalez Nogueira
-Gmail: joaquingonzaleznogueira85@gmail.com Linkedin:https://www.linkedin.com/in/fernando-joaquin-gonzalez-nogueira-27ab94359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app Instagram:https://www.instagram.com/joako.ggn/?utm_source=ig_web_button_share_sheet
+Gmail: joaquingonzaleznogueira85@gmail.com Instagram: @joako.ggn Github: joacojgn
+
 Santiago Nicolas Vila
 Gmail: santucraft98@gmail.com
+
 
 
 
