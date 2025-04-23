@@ -1,7 +1,6 @@
 PROTORP 🚆
 
-![protorp y ahora sin png](https://github.com/user-attachments/assets/a00e89dd-8223-4de4-9e75-f0d6cff9d091)
-
+![protorp y ahora sin png pero con png](https://github.com/user-attachments/assets/7bb069b1-c0a1-4d2d-bb31-47779716bc6c)
 
 🌟 Objetivo del Proyecto
 
