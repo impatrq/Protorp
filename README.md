@@ -32,7 +32,8 @@ Nuestro proyecto incluye:
 
 👥 Equipo
 
-Fernando Gonzalez: Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/joako.ggn/?utm_source=ig_web_button_share_sheet)
+Fernando Gonzalez: 
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/joako.ggn/?utm_source=ig_web_button_share_sheet)
 [![Gmail](https://img.shields.io/badge/Gmail-%23D14836.svg?style=for-the-badge&logo=gmail&logoColor=white)](mailto:joaquingonzaleznogueira85@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Joacojgn)
 
