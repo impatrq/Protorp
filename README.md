@@ -31,22 +31,18 @@ Nuestro proyecto incluye:
 
 
 👥 Equipo
-Fernando Joaquin Gonzalez Nogueira
-Gmail: joaquingonzaleznogueira85@gmail.com Instagram: @joako.ggn Github: joacojgn
 
-Santiago Nicolas Vila
-Gmail: santucraft98@gmail.com
+Fernando Gonzalez: Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/joako.ggn/?utm_source=ig_web_button_share_sheet)
+[![Gmail](https://img.shields.io/badge/Gmail-%23D14836.svg?style=for-the-badge&logo=gmail&logoColor=white)](mailto:joaquingonzaleznogueira85@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Joacojgn)
+
+Santiago Vila: [![Gmail](https://img.shields.io/badge/Gmail-%23D14836.svg?style=for-the-badge&logo=gmail&logoColor=white)](mailto:santucraft98@gmail.com)
+
+## 📬 Contacto
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/protorp25/)
+[![Gmail](https://img.shields.io/badge/Gmail-%23D14836.svg?style=for-the-badge&logo=gmail&logoColor=white)](mailto:protorp25@gmail.com)
 
 
-
-
-
-
-📞 Contacto
-¡Contáctanos para más información!
-- Instagram: @protorp25
-- Correo: protorp.impa.2025@gmail.com
-- Pagina web: pronto
 
 
 
