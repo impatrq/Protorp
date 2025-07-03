@@ -42,7 +42,8 @@ body {
 .content-block,
 .feature-item,
 .footer-content-grid,
-.footer-bottom {
+.footer-bottom,
+.what-we-do-box {
     opacity: 0;
     animation: fadeInUp 1s ease-out forwards;
 }
@@ -52,6 +53,9 @@ body {
 }
 .content-block {
     animation-delay: 0.5s;
+}
+.what-we-do-box {
+    animation-delay: 0.6s;
 }
 .feature-item:nth-child(1) { animation-delay: 0.7s; }
 .feature-item:nth-child(2) { animation-delay: 0.9s; }
@@ -354,10 +358,39 @@ body {
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.sponsor-links a:hover {
-    color: var(--primary-color);
-    transform: translateY(-5px);
+.sponsor-item {
+    background-color: var(--dark-section-bg);
+    padding: 35px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 250px;
+    flex: 1;
+    max-width: 400px;
+    text-align: center;
 }
+
+.sponsor-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 193, 7, 0.4);
+    background-color: #222222;
+}
+
+.sponsor-item a {
+    color: var(--light-grey);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.sponsor-item a:hover {
+    color: var(--primary-color);
+}
+
 
 .siemens-logo-svg {
     width: 250px;
@@ -366,19 +399,50 @@ body {
     transition: fill 0.3s ease;
 }
 
-.sponsor-links a:hover .siemens-logo-svg {
+.sponsor-item a:hover .siemens-logo-svg {
     fill: var(--text-color);
 }
 
-.sponsor-text {
-    margin-top: 10px;
+.sponsor-gratitude {
     font-size: 1em;
     color: var(--light-grey);
-    transition: color 0.3s ease;
+    margin-top: 15px;
+    max-width: 250px;
 }
 
-.sponsor-links a:hover .sponsor-text {
-    color: var(--primary-color);
+.sponsor-img {
+    max-width: 200px;
+    height: auto;
+    filter: sepia(100%) saturate(300%) hue-rotate(30deg) brightness(80%) contrast(120%);
+    transition: transform 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.sponsor-links a .sponsor-img:hover {
+    transform: translateY(-5px);
+}
+
+.what-we-do-box {
+    background-color: var(--secondary-color);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    max-width: 700px;
+    margin: 40px auto 0 auto;
+}
+
+.what-we-do-box .section-description {
+    margin-bottom: 0;
+    max-width: none;
+}
+
+.what-we-do-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px #1eda0d;
+    background-color: #111;
 }
 
 
@@ -405,9 +469,42 @@ body {
 
 .feature-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 193, 7, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
     background-color: #222222;
 }
+
+
+#como-funciona .feature-item:nth-child(1):hover { 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px #1eda0d(38, 97, 85, 0.7);
+    background-color: #2a6f60;
+}
+#como-funciona .feature-item:nth-child(2):hover { 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 193, 7, 0.7);
+    background-color: #2d2a1b;
+}
+#como-funciona .feature-item:nth-child(3):hover { 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(229, 57, 53, 0.7);
+    background-color: #2a1b1b;
+}
+
+
+#que-buscamos .feature-item:nth-child(1):hover { 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px #1eda0d(38, 97, 85, 0.7);
+    background-color: #1eda0d;
+}
+#que-buscamos .feature-item:nth-child(2):hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 193, 7, 0.7);
+    background-color: #2d2a1b;
+}
+#que-buscamos .feature-item:nth-child(3):hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(229, 57, 53, 0.7);
+    background-color: #2a1b1b;
+}
+#que-buscamos .feature-item:nth-child(4):hover { 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px #1eda0d(38, 97, 85, 0.7);
+    background-color: #1eda0d;
+}
+
 
 .feature-title {
     font-family: 'Space Mono', monospace;
@@ -606,6 +703,9 @@ body {
     .feature-item {
         min-height: 280px; 
     }
+    .sponsor-item {
+        min-height: 280px;
+    }
     
     .navbar ul li a .nav-text {
         display: none;
@@ -710,6 +810,12 @@ body {
     .feature-item {
         min-height: auto;
     }
+    .sponsor-item {
+        min-height: auto;
+    }
+    .what-we-do-box {
+        padding: 30px;
+    }
     .footer-content-grid {
         flex-direction: column;
         align-items: center;
@@ -755,6 +861,9 @@ body {
     .feature-item {
         padding: 25px;
     }
+    .sponsor-item {
+        padding: 25px;
+    }
     .footer-title {
         font-size: 1.8em;
     }
@@ -764,5 +873,7 @@ body {
     .siemens-logo-svg {
         width: 150px;
     }
+    .what-we-do-box {
+        padding: 25px;
+    }
 }
-
