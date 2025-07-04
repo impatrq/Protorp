@@ -8,6 +8,7 @@
     --box-green: #266155;
     --box-violet: #7F4181;
     --box-orange: #FD6D04;
+    --fluorescent-green: #39FF14; /* New fluorescent green color */
 }
 
 body {
@@ -441,8 +442,8 @@ body {
 
 .what-we-do-box:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(38, 97, 85, 0.7); /* Green hover */
-    background-color: #111;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(57, 255, 20, 0.7); /* Fluorescent Green hover */
+    background-color: #222222; /* Keep background subtle */
 }
 
 
@@ -474,35 +475,35 @@ body {
 }
 
 /* Hover effects for "¿Cómo funciona?" section */
-#como-funciona .feature-item:nth-child(1):hover { /* ATS - Green */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(38, 97, 85, 0.7);
-    background-color: #2a6f60;
+#como-funciona .feature-item:nth-child(1):hover { /* ATS - Fluorescent Green */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(57, 255, 20, 0.7);
+    background-color: #222222;
 }
 #como-funciona .feature-item:nth-child(2):hover { /* ATP - Yellow */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 193, 7, 0.7);
-    background-color: #2d2a1b;
+    background-color: #222222;
 }
 #como-funciona .feature-item:nth-child(3):hover { /* Luces / Señales - Red */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(229, 57, 53, 0.7);
-    background-color: #2a1b1b;
+    background-color: #222222;
 }
 
 /* Hover effects for "¿Qué buscamos?" section (Beneficios) */
-#que-buscamos .feature-item:nth-child(1):hover { /* Prevención de accidentes - Green */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(38, 97, 85, 0.7);
-    background-color: #2a6f60;
+#que-buscamos .feature-item:nth-child(1):hover { /* Prevención de accidentes - Fluorescent Green */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(57, 255, 20, 0.7);
+    background-color: #222222;
 }
 #que-buscamos .feature-item:nth-child(2):hover { /* Eficiencia - Yellow */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 193, 7, 0.7);
-    background-color: #2d2a1b;
+    background-color: #222222;
 }
 #que-buscamos .feature-item:nth-child(3):hover { /* Capacitación profesional - Red */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(229, 57, 53, 0.7);
-    background-color: #2a1b1b;
+    background-color: #222222;
 }
-#que-buscamos .feature-item:nth-child(4):hover { /* Reducción de Costos - Green */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(38, 97, 85, 0.7);
-    background-color: #2a6f60;
+#que-buscamos .feature-item:nth-child(4):hover { /* Reducción de Costos - Fluorescent Green */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(57, 255, 20, 0.7);
+    background-color: #222222;
 }
 
 
