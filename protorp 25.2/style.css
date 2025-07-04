@@ -441,7 +441,7 @@ body {
 
 .what-we-do-box:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px #1eda0d;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(38, 97, 85, 0.7); /* Green hover */
     background-color: #111;
 }
 
@@ -473,36 +473,36 @@ body {
     background-color: #222222;
 }
 
-
-#como-funciona .feature-item:nth-child(1):hover { 
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px #1eda0d(38, 97, 85, 0.7);
+/* Hover effects for "¿Cómo funciona?" section */
+#como-funciona .feature-item:nth-child(1):hover { /* ATS - Green */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(38, 97, 85, 0.7);
     background-color: #2a6f60;
 }
-#como-funciona .feature-item:nth-child(2):hover { 
+#como-funciona .feature-item:nth-child(2):hover { /* ATP - Yellow */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 193, 7, 0.7);
     background-color: #2d2a1b;
 }
-#como-funciona .feature-item:nth-child(3):hover { 
+#como-funciona .feature-item:nth-child(3):hover { /* Luces / Señales - Red */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(229, 57, 53, 0.7);
     background-color: #2a1b1b;
 }
 
-
-#que-buscamos .feature-item:nth-child(1):hover { 
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px #1eda0d(38, 97, 85, 0.7);
-    background-color: #1eda0d;
+/* Hover effects for "¿Qué buscamos?" section (Beneficios) */
+#que-buscamos .feature-item:nth-child(1):hover { /* Prevención de accidentes - Green */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(38, 97, 85, 0.7);
+    background-color: #2a6f60;
 }
-#que-buscamos .feature-item:nth-child(2):hover {
+#que-buscamos .feature-item:nth-child(2):hover { /* Eficiencia - Yellow */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 193, 7, 0.7);
     background-color: #2d2a1b;
 }
-#que-buscamos .feature-item:nth-child(3):hover {
+#que-buscamos .feature-item:nth-child(3):hover { /* Capacitación profesional - Red */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(229, 57, 53, 0.7);
     background-color: #2a1b1b;
 }
-#que-buscamos .feature-item:nth-child(4):hover { 
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px #1eda0d(38, 97, 85, 0.7);
-    background-color: #1eda0d;
+#que-buscamos .feature-item:nth-child(4):hover { /* Reducción de Costos - Green */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(38, 97, 85, 0.7);
+    background-color: #2a6f60;
 }
 
 
