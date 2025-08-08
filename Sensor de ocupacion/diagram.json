@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "author": "PROTORP",
+  "editor": "Wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 50, "left": 100, "attrs": {} },
+    {
+      "type": "wokwi-button",
+      "id": "boton",
+      "top": 150,
+      "left": 300,
+      "attrs": { "label": "Sensor virtual" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 140.6,
+      "left": 240,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 188.4,
+      "left": 234.2,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 188.4,
+      "left": 282.2,
+      "attrs": { "color": "limegreen" }
+    }
+  ],
+  "connections": [
+    [ "boton:1", "esp:4", "blue", [ "v0" ] ],
+    [ "boton:2", "esp:GND", "black", [ "v0" ] ],
+    [ "btn1:1.l", "esp:4", "green", [ "h0" ] ],
+    [ "btn1:2.r", "esp:GND.1", "green", [ "h0" ] ],
+    [ "led1:C", "esp:GND.1", "green", [ "v0" ] ],
+    [ "led1:A", "esp:15", "green", [ "v0" ] ],
+    [ "led2:C", "esp:GND.1", "green", [ "v0" ] ],
+    [ "led2:A", "esp:2", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
