@@ -1,0 +1,30 @@
+import network
+import time
+from umqttsimple import MQTTClient
+
+ssid = 'Cooperadora Alumnos'
+password = 'Profes_IMPA_2022'
+broker = 'broker.hivemq.com'
+topic = b'protorp/tren'
+
+def connect_wifi():
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    wlan.connect("Cooperadora Profesores","Profes_IMPA_2022")
+    while not wlan.isconnected():
+        time.sleep(0.5)
+    print("Conectado a WiFi:", wlan.ifconfig())
+
+def sub_cb(topic, msg):
+    print("Mensaje recibido:", msg)
+
+connect_wifi()
+client = MQTTClient("PicoClient", broker)
+client.set_callback(sub_cb)
+client.connect()
+client.subscribe(topic)
+print("Suscripto al tema:", topic)
+
+while True:
+    client.check_msg()
+    time.sleep(1)
