@@ -1,30 +1,29 @@
-import network
+from machine import Pin
 import time
-from umqttsimple import MQTTClient
 
-ssid = 'Cooperadora Alumnos'
-password = 'Profes_IMPA_2022'
-broker = 'broker.hivemq.com'
-topic = b'protorp/tren'
 
-def connect_wifi():
-    wlan = network.WLAN(network.STA_IF)
-    wlan.active(True)
-    wlan.connect("Cooperadora Profesores","Profes_IMPA_2022")
-    while not wlan.isconnected():
-        time.sleep(0.5)
-    print("Conectado a WiFi:", wlan.ifconfig())
+led_rojo = Pin(16, Pin.OUT)
+led_amarillo = Pin(17, Pin.OUT)
+led_verde = Pin(18, Pin.OUT)
 
-def sub_cb(topic, msg):
-    print("Mensaje recibido:", msg)
+# RF transmisor
+tx = Pin(0, Pin.OUT)
 
-connect_wifi()
-client = MQTTClient("PicoClient", broker)
-client.set_callback(sub_cb)
-client.connect()
-client.subscribe(topic)
-print("Suscripto al tema:", topic)
+def enviar_estado(color):
+    if color == "rojo":
+        tx.value(1)
+        led_rojo.on(); led_amarillo.off(); led_verde.off()
+    elif color == "amarillo":
+        tx.value(0)
+        led_rojo.off(); led_amarillo.on(); led_verde.off()
+    elif color == "verde":
+        tx.value(1)
+        led_rojo.off(); led_amarillo.off(); led_verde.on()
 
 while True:
-    client.check_msg()
-    time.sleep(1)
+    enviar_estado("rojo")
+    time.sleep(5)
+    enviar_estado("amarillo")
+    time.sleep(5)
+    enviar_estado("verde")
+    time.sleep(5)
