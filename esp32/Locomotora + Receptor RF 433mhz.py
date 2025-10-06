@@ -5,14 +5,14 @@ from umqttsimple import MQTTClient
 # RF receptor
 rx = Pin(1, Pin.IN)
 
-# Wi-Fi
+
 sta_if = network.WLAN(network.STA_IF)
 sta_if.active(True)
-sta_if.connect("Cooperadora Profesores", "Profes_IMPA_2022")A
+sta_if.connect("Cooperadora Profesores", "Profes_IMPA_2022")
 while not sta_if.isconnected():
     time.sleep(0.5)
 
-# MQTT
+
 client = MQTTClient("esp32", "broker.hivemq.com")
 client.connect()
 
@@ -26,4 +26,5 @@ while True:
     mensaje = '{{"velocidad":{},"voltaje":{},"estado_semaforo":"{}"}}'.format(velocidad, voltaje, estado)
     client.publish(b"protorp/tren", mensaje)
     print("Publicado:", mensaje)
+
     time.sleep(5)
