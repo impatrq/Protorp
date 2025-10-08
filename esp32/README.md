@@ -13,6 +13,6 @@ Durante el proceso de testeo se realizaron varias modificaciones del código par
 - La ultima razon es que los codigos originales se hicieron para que la ESP32 y la raspberry se comunicaran por WIFI, pero la gracia es que se manden los datos por los transmisores y receptores de 433MHZ para poder usarlos como baliza y sensar el paso del tren cuando pasa por la via, y que la raspberry se comunique con WIFI y poder mostrar toda la informacion que tienen las señales conectadas  a las raspberrys en la pagina web     
 
 
-Este README sirve se creo con la finalidad de responder a esa pregunta. A partir de ahora se añadiran las librerias que se usaron y como probar el codigo, pero los cambios importantes se realizaran en el codigo llamado main.py.
-El codigo que main.py que esta a fecha de creado este Readme se hizo de esta manera para probar un transmisor en la Raspberry y un receptor en la ESP32. El siguiente cambio que se hara en el codigo sera para que el ESP32 tenga un transmisor y un receptor y la Raspberry tenga 2 transmisores y 2 receptores
+Este README se creo con la finalidad de responder a esa pregunta. A partir de ahora se añadiran las librerias que se usaron y como probar el codigo, pero los cambios importantes se realizaran en el codigo llamado main.py.
+El codigo qmain.py que esta actualmente, a fecha de creado este Readme, se hizo de esta manera para probar un transmisor en la Raspberry y un receptor en la ESP32. El siguiente cambio que se hara en el codigo sera para que el ESP32 tenga un transmisor y un receptor y la Raspberry tenga 2 transmisores y 2 receptores.
 
