@@ -3,7 +3,7 @@
 Este repositorio se basa el desarrollo de un sistema de señalización ferroviaria, basado en comunicación por radiofrecuencia entre una Raspberry Pi Pico (a la cual va conectada un transmisor) y una ESP32 ( a la cuel se conecta un receptor). El objetivo es simular el estado de vías (LIBRE, PRECAUCIÓN, OCUPADO).
 
 
-**¿Por qué se borró esta carpeta varias veces?^**
+**¿Por qué se borró esta carpeta varias veces?**
 
 Durante el proceso de testeo se realizaron varias modificaciones del código para la ESP32 y se elimino esta carpeta algunas veces. Algunas razones son:
 
