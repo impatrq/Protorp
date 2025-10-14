@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "author": "Fernando",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 50, "left": 100, "attrs": {} },
+    { "type": "wokwi-led", "id": "ledV", "top": -10, "left": 300, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "ledA", "top": 50, "left": 300, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "ledR", "top": 110, "left": 300, "attrs": { "color": "red" } },
+    { "type": "wokwi-servo", "id": "servo", "top": 180, "left": 300, "attrs": {} },
+    { "type": "wokwi-button", "id": "boton", "top": 250, "left": 300, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 150.2,
+      "left": -38.4,
+      "attrs": { "color": "green", "xray": "1" }
+    }
+  ],
+  "connections": [
+    [ "esp:4", "ledV:A", "green", [ "h0" ] ],
+    [ "esp:16", "ledA:A", "yellow", [ "h0" ] ],
+    [ "esp:2", "ledR:A", "red", [ "h0" ] ],
+    [ "ledV:C", "esp:GND", "black", [ "v0", "h-100" ] ],
+    [ "ledA:C", "esp:GND", "black", [ "v0", "h-100" ] ],
+    [ "ledR:C", "esp:GND", "black", [ "v0", "h-100" ] ],
+    [ "esp:18", "servo:PWM", "blue", [ "h0" ] ],
+    [ "servo:GND", "esp:GND", "black", [ "v0", "h-100" ] ],
+    [ "servo:V+", "esp:VIN", "red", [ "v0", "h-100" ] ],
+    [ "boton:1", "esp:14", "orange", [ "h0" ] ],
+    [ "boton:2", "esp:GND", "black", [ "h0" ] ],
+    [ "ledR:C", "esp:GND.1", "green", [ "v0" ] ],
+    [ "ledA:C", "esp:GND.1", "green", [ "v0" ] ],
+    [ "ledV:C", "esp:GND.1", "green", [ "v0" ] ],
+    [ "btn1:1.l", "esp:14", "green", [ "h0" ] ],
+    [ "btn1:2.r", "esp:GND.1", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
