@@ -1,50 +1,37 @@
-from rf_simple import Rx, Tx
+from rf_simple import Tx, Rx
 from machine import Pin
 import time
+import random
 
+tx_locomotora = Tx(20)
+rx_estado = Rx(21)
 
-rx_via = 21        
-tx_locomotora = 20  
-
-
-ESTADOS = {
-    0: 'LIBRE',
-    1: 'PRECAUCION',
-    2: 'OCUPADO'
-}
-
-NOMBRE_LOCOMOTORA = "PROTORP"
+VEL_MAXIMA = 120
 ID_LOCOMOTORA = 7
-
-
+NOMBRE_LOCOMOTORA = "PROTORP"
 
 def recibir_estado():
     try:
-        valor = rx_via.listen()
-        estado = ESTADOS.get(valor, 'DESCONOCIDO')
-        print("PROTORP recibió estado:", estado, f"({valor})")
-        return estado
+        valor = rx_estado.listen()
+        estados = {0: 'LIBRE', 1: 'PRECAUCION', 2: 'OCUPADO'}
+        return estados.get(valor, 'DESCONOCIDO')
     except:
-        print("Error de recepción")
         return None
 
-def transmitir_respuesta(estado):
-    if estado == 'LIBRE':
-        velocidad_kmh = 120
-    elif estado == 'PRECAUCION':
-        velocidad_kmh = 50
-    elif estado == 'OCUPADO':
-        velocidad_kmh = 0
-    else:
-        velocidad_kmh = 0
-
-    velocidad_bits = min(int(velocidad_kmh / 8), 15)  
-    respuesta = (velocidad_bits << 4) | 7             
-    tx_protorp.send_byte(respuesta)
-    print(f"PROTORP,Velocidad={velocidad_kmh} km/h, ID=7, Byte={respuesta}")
-
 while True:
+    velocidad_actual = random.randint(0, 150)
     estado = recibir_estado()
-    if estado in ESTADOS.values():
-        transmitir_respuesta(estado)
-    time.sleep(1)
+
+    if estado == 'OCUPADO':
+        velocidad_actual = 0
+    elif estado == 'PRECAUCION' and 110 <= velocidad_actual <= 120:
+        velocidad_actual = 50
+        
+
+    velocidad_bits = min(int(velocidad_actual / 8), 15)
+    byte = (velocidad_bits << 4) | ID_LOCOMOTORA
+    tx_locomotora.send_byte(byte)
+
+    print(f"{NOMBRE_LOCOMOTORA} , Estado recibido: {estado}, Velocidad: {velocidad_actual} km/h, Byte enviado: {byte}")
+    time.sleep(2)
+
