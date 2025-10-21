@@ -1,9 +1,7 @@
 from machine import Pin, PWM
 import time, random
-from rf_simple import Tx, Rx
 import bluetooth
 from ble_simple_peripheral import BLESimplePeripheral
-
 
 PIN_ENA = 4
 PIN_IN1 = 3
@@ -14,9 +12,6 @@ pwm.freq(1000)
 dir1 = Pin(PIN_IN1, Pin.OUT)
 dir2 = Pin(PIN_IN2, Pin.OUT)
 
-tx= Tx(20)
-rx= Rx(21)
-
 VEL_MAX = 120
 ID_LOCO = 7
 NOMBRE_LOCO = "PROTORP"
@@ -25,6 +20,7 @@ ble = bluetooth.BLE()
 sp = BLESimplePeripheral(ble, name=NOMBRE_LOCO)
 
 vel_bt = None
+estado = "LIBRE"
 
 def set_motor_speed(vel):
     if vel < 0:
@@ -36,43 +32,45 @@ def set_motor_speed(vel):
     dir1.value(1)
     dir2.value(0)
 
-def recibir_estado():
+def on_rx(data):
+    global vel_bt
     try:
-        val = rx_estado.listen()
-        estados = {0: 'LIBRE', 1: 'PRECAUCION', 2: 'OCUPADO'}
-        return estados.get(val, 'DESCONOCIDO')
+        vel_bt = int(data.decode().strip())
+        print("Velocidad recibida por BLE:", vel_bt)
     except:
-        return None
+        vel_bt = None
+
+sp.on_write(on_rx)
 
 while True:
-    if sp.is_connected():
-        data = sp.read()
-        if data:
-            try:
-                vel_bt = int(data.decode().strip())
-            except:
-                vel_bt = None
-                
     if vel_bt is not None:
         velocidad_actual = vel_bt
     else:
         velocidad_actual = random.randint(50, 140)
 
-    estado = recibir_estado()
-    
-    if estado == 'OCUPADO':
+    if velocidad_actual > 120:
+        estado = "OCUPADO"
+    elif velocidad_actual >= 100:
+        estado = "PRECAUCION"
+    else:
+        estado = "LIBRE"
+
+    if estado == "OCUPADO":
         velocidad_actual = 0
-    elif estado == 'PRECAUCION' and velocidad_actual > 100:
+    elif estado == "PRECAUCION" and velocidad_actual > 100:
         velocidad_actual = int(velocidad_actual / 2)
 
     set_motor_speed(velocidad_actual)
 
-    velocidad_bits = min(int(velocidad_actual / 8), 15)
-    byte = (velocidad_bits << 4) | ID_LOCO
-    tx.send_byte(byte)
+    mensaje = f"{estado}:{velocidad_actual}"
+    try:
+        sp.send(mensaje)
+    except:
+        pass
 
-    print(f"{NOMBRE_LOCO}, Estado: {estado}, Vel: {velocidad_actual} km/h, Byte: {byte}")
-    time.sleep(2)
+    print(f"{NOMBRE_LOCO} | Estado: {estado} | Vel: {velocidad_actual} km/h")
+    time.sleep(1)
+
 
 
 
