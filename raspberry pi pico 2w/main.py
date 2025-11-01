@@ -1,136 +1,168 @@
+import urequests as requests
+import time
+import machine
 from machine import Pin, UART
-import time, json, network, urequests
+import network
+import json
 
-UART_ID = 15
-UART_TX1 = 0
-UART_RX1 = 1
-UART_TX2 = 4
-UART_RX2 = 5
-
-uart_rf_1 = UART(0, baudrate=9600, tx=Pin(UART_TX1), rx=Pin(UART_RX1))
-uart_rf_2 = UART(1, baudrate=9600, tx=Pin(UART_TX2), rx=Pin(UART_RX2))
-uart_ports = [uart_rf_1, uart_rf_2]
-
-
-PIN_R1 = 21     
-PIN_A1 = 20
-PIN_V1 = 19  
-
-PIN_R2 = 18
-PIN_A2 = 17
-PIN_V2 = 16
-
-led_R1, led_A1, led_V1 = Pin(PIN_R1, Pin.OUT), Pin(PIN_A1, Pin.OUT), Pin(PIN_V1, Pin.OUT)
-led_R2, led_A2, led_V2 = Pin(PIN_R2, Pin.OUT), Pin(PIN_A2, Pin.OUT), Pin(PIN_V2, Pin.OUT)
-
+SEGMENT_ID = 1
 
 WIFI_SSID = "Cooperadora Profesores"
 WIFI_PASSWORD = "Profes_IMPA_2022"
-SEGMENT_ID = 1
-API_URL = "http://192.168.1.10/update_segment"
 
-estado_real = "LIBRE"         
-estado_siguiente = "LIBRE"    
-locomotora_data = {"id": 0, "nombre": "", "velocidad": 0, "seguridad": "LIBRE"}
-last_data_time = time.time()
-TIMEOUT_SECS = 5
+SERVER_IP = "192.168.1.138" 
+SERVER_PORT = 5000
+BASE_URL = f"http://{SERVER_IP}:{SERVER_PORT}"
+
+PIN_SENSOR = 15
+
+SEMAFORO_1 = {
+    'ROJO': Pin(21, Pin.OUT), 
+    'AMARILLO': Pin(20, Pin.OUT), 
+    'VERDE': Pin(19, Pin.OUT)
+}
+SEMAFORO_2 = {
+    'ROJO': Pin(18, Pin.OUT), 
+    'AMARILLO': Pin(17, Pin.OUT), 
+    'VERDE': Pin(16, Pin.OUT)
+}
+
+uart0 = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1))
+uart1 = UART(1, baudrate=9600, tx=Pin(4), rx=Pin(5))
+UARTS = [uart0, uart1]
+
+sensor_ocupacion = Pin(PIN_SENSOR, Pin.IN, Pin.PULL_UP)
+wlan = network.WLAN(network.STA_IF)
 
 def connect_wifi():
-    wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
-    wlan.connect("Cooperadora Profesores","Profes_IMPA_2022")
-    while not wlan.isconnected():
-        time.sleep(1)
-    print(f"[Wi-Fi] Conectado. IP: {wlan.ifconfig()[0]}")
-    return wlan
+    if not wlan.isconnected():
+        wlan.connect(WIFI_SSID, WIFI_PASSWORD)
+        max_wait = 10
+        print(f"Intentando conectar a {WIFI_SSID}...")
+        while max_wait > 0 and not wlan.isconnected():
+            time.sleep(1)
+            print('.', end='')
+            max_wait -= 1
 
-def set_semaphore(leds, estado):
-    r, a, v = leds
-    r.value(0), a.value(0), v.value(0)
-    
-    if estado == "OCUPADO":
-        r.value(1)
-        print("Semaforo en ROJO (OCUPADO)")
-    elif estado == "PRECAUCION":
-        a.value(1)
-        print("Semaforo en AMARILLO (PRECAUCION)")
-    elif estado == "LIBRE":
-        v.value(1)
-        print("Semaforo en VERDE (LIBRE)")
+    if not wlan.isconnected():
+        print("\n Conexión fallida. Reiniciando en 5s.")
+        time.sleep(5)
+        machine.reset()
+    else:
+        status = wlan.ifconfig()
+        print("\n Conexión exitosa.")
+        print('IP local:', status[0])
 
-def determine_real_state(loco_speed):
-    global last_data_time
-    
-    if loco_speed > 0 and (time.time() - last_data_time) < TIMEOUT_SECS:
-        return "OCUPADO"
-    
-    if loco_speed == 0 and (time.time() - last_data_time) < TIMEOUT_SECS:
-        return "OCUPADO"
-    
-    return "LIBRE"
+def get_loco_data():
+    for uart in UARTS:
+        if uart.any():
+            try:
+                line = uart.readline()
+                if line:
+                    data_str = line.decode('utf-8').strip()
+                    data = json.loads(data_str)
+                    loco_id = data.get('id', 0)
+                    loco_speed = data.get('vel', 0)
+                    print(f"  [UART Recibido en {uart.init(None)}] ID: {loco_id}, Vel: {loco_speed}")
+                    return loco_id, loco_speed
+            except Exception as e:
+                print(f" Error al decodificar UART/JSON en {uart.init(None)}: {e}. Limpiando buffer.")
+                while uart.any():
+                    uart.read(1)
+                time.sleep_ms(10)
+    return 0, 0
 
-def apply_cascading_logic(current_state):
-    if current_state == "OCUPADO":
-        return "PRECAUCION"
-    elif current_state == "PRECAUCION":
+def get_preceding_status(preceding_id):
+    if preceding_id < 1:
         return "LIBRE"
-    return "LIBRE"
 
-def send_web_status():
+    url = f"{BASE_URL}/get_segment_next_status/{preceding_id}"
     try:
-        payload = json.dumps({
-            "segment_id": SEGMENT_ID,
-            "status_real": estado_real,
-            "status_next": estado_siguiente,
-            "loco_id": locomotora_data["id"],
-            "loco_speed": locomotora_data["velocidad"]
-        })
+        response = requests.get(url)
+        status_next = response.json().get('status_next', 'LIBRE')
+        response.close()
+        return status_next
+    except Exception as e:
+        print(f" Error al consultar tramo anterior ({preceding_id}): {e}")
+        return "LIBRE"
+
+def send_update(status_real, status_next, loco_id, loco_speed):
+    url = f"{BASE_URL}/update_segment"
+    payload = {
+        "segment_id": SEGMENT_ID,
+        "status_real": status_real,
+        "status_next": status_next,
+        "loco_id": loco_id,
+        "loco_speed": loco_speed,
+    }
+    
+    try:
+        response = requests.post(url, json=payload)
         
-        headers = {'Content-Type': 'application/json'}
-        response = urequests.post(API_URL, headers=headers, data=payload) 
+        if response.status_code == 200:
+            print(f"  [HTTP Enviado] Real: {status_real}, Next: {status_next}")
+        else:
+            print(f" Error Mímico ({response.status_code}): {response.text}")
+        
         response.close()
         
     except Exception as e:
-        print(f"[Web] Error al enviar estado: {e}")
+        print(f" Error de red HTTP al enviar estado: {e}")
 
-if __name__ == '__main__':
-    wlan = connect_wifi()
-    set_semaphore((led_R1, led_A1, led_V1), "LIBRE")
-    set_semaphore((led_R2, led_A2, led_V2), "LIBRE") 
+def determine_security_status(status_real):
+    if status_real == 'OCUPADO':
+        return 'BLOQUEADO'
+    else:
+        return 'LIBRE'
 
+def actualizar_semaforos(nombre_estado):
+    for semaforo in [SEMAFORO_1, SEMAFORO_2]:
+        semaforo['ROJO'].value(0)
+        semaforo['AMARILLO'].value(0)
+        semaforo['VERDE'].value(0)
+
+        if nombre_estado == 'LIBRE':
+            semaforo['VERDE'].value(1)
+        elif nombre_estado == 'PRECAUCION':
+            semaforo['AMARILLO'].value(1)
+        elif nombre_estado == 'BLOQUEADO' or nombre_estado == 'OCUPADO':
+            semaforo['ROJO'].value(1)
+
+def main_loop():
+    print(f"--- Tramo Fijo ID: {SEGMENT_ID} INICIADO ---")
+    
+    connect_wifi()
+    
+    preceding_id = SEGMENT_ID - 1
+    
     while True:
+        is_occupied = not sensor_ocupacion.value()
+        status_real = 'OCUPADO' if is_occupied else 'LIBRE'
         
-        for uart_rf in uart_ports:
-            if uart_rf.any():
-                try:
-                    line = uart_rf.readline().decode().strip()
-                    if line:
-                        parts = line.split(',')
-                        if len(parts) == 4: 
-                            locomotora_data["id"] = int(parts[0])
-                            locomotora_data["nombre"] = parts[1]
-                            locomotora_data["velocidad"] = int(parts[2])
-                            locomotora_data["seguridad"] = parts[3] 
-                            last_data_time = time.time()
-                            
-                            new_state = determine_real_state(locomotora_data["velocidad"])
-                            
-                            if new_state != estado_real:
-                                estado_real = new_state
-                                print(f"[Bloqueo] Tramo {SEGMENT_ID} REAL: {estado_real}")
-                                
-                                estado_siguiente = apply_cascading_logic(estado_real)
-                                
-                                uart_rf.write(f"{estado_real}\n".encode('utf-8'))
-                                
-                                set_semaphore((led_R1, led_A1, led_V1), estado_real)
-                                set_semaphore((led_R2, led_A2, led_V2), estado_siguiente)
-
-                except Exception as e:
-                    print(f"[UART RX] Error de procesamiento: {e}")
+        loco_id, loco_speed = get_loco_data()
         
-        if wlan.isconnected():
-            send_web_status()
+        preceding_status = get_preceding_status(preceding_id)
+        
+        status_next = determine_security_status(status_real)
+        
+        actualizar_semaforos(preceding_status)
+        
+        if loco_id != 0:
+            signal_to_loco = json.dumps({"signal": preceding_status}) + "\n"
+            for uart in UARTS:
+                uart.write(signal_to_loco.encode('utf-8'))
+            print(f"  [UART Enviado] Señal a Locomotora {loco_id} en ambos puertos: {preceding_status}")
+        
+        send_update(status_real, status_next, loco_id, loco_speed)
 
         time.sleep(0.5)
+
+try:
+    main_loop()
+except Exception as e:
+    print(f"FATAL ERROR en main_loop: {e}")
+    time.sleep(5)
+    machine.reset()
+
 
