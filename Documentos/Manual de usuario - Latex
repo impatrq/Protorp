@@ -1,0 +1,202 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\geometry{margin=2.5cm}
+\setstretch{1.2}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+\includegraphics[width=0.4\textwidth]{unnamed.png}\\[1cm]
+
+{\Huge \textbf{PROTORP}}\\[0.5cm]
+{\Large Manual de Usuario}\\[0.5cm]
+{\large Año de desarrollo: 2025}\\[1cm]
+
+{\large E.E.T. Nº7 de Quilmes}\\[1cm]
+
+\textbf{Sitio web:} \href{https://protorp2025.netlify.app/}{https://protorp.com}\\[0.2cm]
+\textbf{Trello:} \href{https://trello.com/b/dudjmzhY/kanban}{https://trello.com/protorp}\\[0.2cm]
+\textbf{GitHub:} \href{https://github.com/impatrq/Protorp}{https://github.com/protorp}\\[0.2cm]
+\textbf{Redes sociales:} \href{https://www.instagram.com/protorp25/}{@protorp}\\[3cm]
+
+\vfill
+\textbf{Escuela de Educación Técnica Nº7 “Taller Regional Quilmes”}\\
+\textbf{Especialidad: Electrónica}\\[0.2cm]
+\textbf{Año lectivo: 2025}
+
+\vspace*{1cm}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Introducción}
+
+\subsection{Descripción de PROTORP}
+PROTORP es un sistema de protección (ATP) y freno automático (ATS) de trenes a escala. 
+La maqueta cuenta con su propio sistema de señalización, control de vía, cambios de vía y panel mímico, con el fin de simular un entorno ferroviario a escala y representar de forma realista el funcionamiento ferroviario.
+
+\subsection{Objetivo}
+El objetivo de PROTORP es poder tener un control sobre las formaciones que circulan sobre la vía, y la forma en la que se respetan los espacios para cada una. Esto tiene como finalidad evitar colisiones o accidentes y asegurar un flujo constante de trenes. 
+También está diseñado para que las señales sean automáticas y así reducir el trabajo del señalero.
+
+\subsection{¿Por qué elegir PROTORP?}
+PROTORP está pensado para instruir a quien desee convertirse en maquinista, recreando las distintas situaciones que pueden ocurrir en las vías. 
+Al ser un modelo a escala, se pueden observar y analizar diversos escenarios sin tener que probarlos en un tren real, eliminando por completo los riesgos de accidentes durante el proceso de entrenamiento.
+
+\subsection{Público destinado}
+PROTORP está destinado a personas que quieran convertirse en maquinistas o a quienes deseen entender el funcionamiento de los sistemas ATS y ATP en un entorno controlado y educativo.
+
+\section{Componentes}
+
+\subsection{¿Qué incluye PROTORP?}
+El sistema cuenta con los siguientes elementos:
+
+\begin{itemize}
+    \item \textbf{Tren (locomotora):} integrado con un microcontrolador ESP32 y un driver L298N que controla el motor.
+    \item 8 Raspberry Pi Pico 2W.
+    \item Equipo de vías.
+    \item 12 semáforos normales.
+    \item 4 semáforos de cambio de vía.
+    \item Actuadores de cambio de vía.
+    \item LEDs rojos, amarillos y verdes.
+\end{itemize}
+
+\subsection{¿Qué se necesita para probar PROTORP?}
+Para probar el sistema, el usuario debe contar con:
+
+\begin{itemize}
+    \item Fuente de alimentación (de 5 a 12V).
+    \item Un teléfono móvil con Bluetooth y la aplicación \textbf{NRF Connect} instalada.
+\end{itemize}
+
+\section{Instalación del sistema PROTORP}
+
+Para la instalación del sistema PROTORP, es fundamental realizar el montaje de las vías sobre una superficie \textbf{plana y estable}. 
+Esto garantiza un funcionamiento correcto del tren y evita posibles descarrilamientos o errores de lectura en los sensores.
+
+\subsection{Montaje de vías}
+Comience montando los tramos de vía sobre la base. 
+Algunos tramos vienen con \textbf{señales luminosas incluidas}, mientras que otros son tramos simples sin señalización.  
+El montaje mínimo recomendado es de \textbf{un tramo con señales y uno sin señales}, aunque se aconseja instalar \textbf{un tramo con señales cada dos tramos normales} para evitar interferencias entre señales y reducir la posibilidad de entradas de ruido en los transmisores y receptores.
+
+\subsection{Distribución de controladores}
+Cada conjunto de \textbf{dos tramos con señalización} contiene una \textbf{Raspberry Pi Pico 2W}, encargada de supervisar el estado de las vías y transmitir esa información al sistema mímico.  
+Los cables de cada Raspberry se conectan a los \textbf{transmisores y receptores} ubicados en los laterales de las vías, permitiendo la comunicación en tiempo real entre el mímico y la maqueta.
+
+\subsection{Conexión de alimentación}
+El sistema cuenta con un \textbf{potenciometro}, el cual regula la potencia general del circuito.  
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{WhatsApp Image 2025-10-31 at 17.09.12.jpeg}
+    \end{figure}
+
+Se recomienda mantener el voltaje en su \textbf{nivel máximo} durante la operación, ya que el usuario puede controlar la velocidad del tren directamente desde su celular mediante la aplicación \textbf{NRF Connect}.
+
+Antes de encender el sistema, verifique que:
+
+\begin{itemize}
+    \item Todas las vías estén correctamente encajadas para evitar descarrilamientos.
+    \item Los conectores estén firmes y sin falsos contactos.
+    \item Las señales luminosas respondan al encender el circuito.
+\end{itemize}
+
+Una vez comprobado todo, conecte el circuito a la fuente de alimentación y encienda el tren para iniciar la simulación.
+
+\section{Control mediante la app NRF Connect}
+
+La aplicación \textbf{NRF Connect} permite controlar el tren de forma inalámbrica utilizando el Bluetooth del ESP32.
+
+\subsection*{Pasos para usarla}
+
+\begin{enumerate}
+    \item Instale la app \textbf{NRF Connect} en su celular.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{Paso 1.jpeg}
+    \end{figure}
+
+    \item Conecte la maqueta a la alimentación eléctrica.
+    \item Encienda el tren y espere unos segundos hasta que el ESP32 (nombrado como ``PROTORP'') comience a emitir su señal Bluetooth.
+    \item Active el Bluetooth en su celular y entre a la app.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{Paso 2.jpeg}
+    \end{figure}
+
+    \item Una vez dentro, presione \textbf{SCAN}
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{Paso 3.jpeg}
+    \end{figure}
+    
+    Busque el dispositivo "PROTORP" y ,cuando lo encuentre, seleccione \textbf{CONNECT}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{Paso 4.jpeg}
+    \end{figure}
+
+    \item En la sección ``Client'', seleccione \textbf{Nordic UART Service}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{Paso 5.jpeg}
+    \end{figure}
+
+    \item En ``Nordic UART Service'', abra \textbf{RX Characteristic} y seleccione la flecha que apunta hacia arriba.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{Paso 6.jpeg}
+    \end{figure}
+
+    Le aparecerá la siguiente pantalla:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{Paso 8.jpeg}
+    \end{figure}
+\end{enumerate}
+
+En "New Value", escriba el valor que desee y presione "SEND".
+
+El sistema recibirá los datos y actuará en consecuencia:
+
+\begin{itemize}
+    \item El límite de velocidad para la locomotora es de \textbf{12 km/h (120)} o \textbf{12V}.
+    \item Si se envía un valor menor, el tren seguirá en línea recta.
+    \item Si se envía un valor entre \textbf{110 y 120}, el tren reducirá su velocidad.
+    \item Si se envía un valor mayor a \textbf{120}, el tren se detendrá.
+\end{itemize}
+
+De esta manera, se puede controlar la velocidad o la dirección del tren sin necesidad de tocar físicamente la maqueta.  
+En caso de pérdida de conexión, el tren se detendrá automáticamente por seguridad.
+
+\section{Problemas o fallas comunes}
+
+Durante la operación pueden presentarse algunos inconvenientes menores:
+
+\begin{itemize}
+    \item \textbf{Los LEDs no encienden:} revisar polaridad o conexión al controlador.
+    \item \textbf{El tren no se mueve:} verificar la conexión Bluetooth y la alimentación del motor.
+    \item \textbf{El mímico no responde:} comprobar la comunicación entre la Raspberry y los módulos ESP32.
+    \item Se recomienda limpiar las vias con virulana y alcohol cada cierto tiempo, para evitar que se occiden y que el tren pueda circular correctamente sobre ellas.
+\end{itemize}
+
+
+\end{document}
