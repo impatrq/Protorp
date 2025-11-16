@@ -1,0 +1,159 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{tikz}
+\graphicspath{{CTF}}
+\usetikzlibrary{shapes, arrows, positioning}
+\geometry{margin=2.5cm}
+\setstretch{1.2}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+\includegraphics[width=0.4\textwidth]{unnamed.png}\\[1cm]
+
+{\Huge \textbf{PROTORP}}\\[0.5cm]
+{\Large Carpeta de Campo}\\[0.5cm]
+{\large Año de desarrollo: 2025}\\[1cm]
+
+{\large E.E.T. Nº7 de Quilmes}\\[1cm]
+
+\textbf{Sitio web:} \href{https://protorp2025.netlify.app/}{https://protorp2025.netlify.app/}\\[0.2cm]
+\textbf{Trello:} \href{https://trello.com/b/dudjmzhY/kanban}{https://trello.com/b/dudjmzhY/kanban}\\[0.2cm]
+\textbf{GitHub:} \href{https://github.com/impatrq/Protorp}{https://github.com/impatrq/Protorp}\\[0.2cm]
+\textbf{Redes sociales:} \href{https://www.instagram.com/protorp25/}{@protorp25}\\[3cm]
+
+\vfill
+\textbf{Escuela de Educación Técnica Nº7 “Taller Regional Quilmes”}\\
+\textbf{Especialidad: Electrónica}\\[0.2cm]
+\textbf{Año lectivo: 2025}
+
+\vspace*{1cm}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Equipo}
+\begin{center}
+\Large\textbf{Integrantes del proyecto PROTORP} \\[0.5em]
+\normalsize Joaquín Gonzalez Nogueira \hspace{1cm} Santiago Nicolás Vila
+\end{center}
+
+\section{Objetivo del Proyecto PROTORP}
+\addcontentsline{toc}{section}{Objetivo del Proyecto PROTORP}
+
+El proyecto \textbf{PROTORP} (Protección y Regulación de Trenes mediante Organización y Respuesta Programada) tiene como objetivo principal el desarrollo de un \textbf{sistema automático de protección ferroviaria (ATP)} y un \textbf{sistema de frenado automático (ATS)} a escala, combinando hardware y software en un entorno educativo. 
+
+El propósito es crear una maqueta funcional que simule un circuito ferroviario real, con señales, cambios de vía, sensores de ocupación y control mediante microcontroladores como \textbf{ESP32} y \textbf{Raspberry Pi}. 
+
+Además, el sistema busca representar cómo la tecnología puede mejorar la seguridad, eficiencia y automatización en el transporte ferroviario, estableciendo un puente entre la educación técnica y las soluciones tecnológicas reales aplicadas al ámbito ferroviario argentino.
+
+\newpage
+\section*{PROYECTO PROTORP: DOCUMENTACIÓN DÍA A DÍA}
+\addcontentsline{toc}{section}{Documentación Día a Día}
+
+\subsection*{ABRIL}
+14/4: Creamos la cuenta de instagram y Santiago empezo a comunicarse con sponsors.\\
+15/4: Joaquin empezo con la programación de la página web y Santiago con la búsqueda de sponsors.\\
+16/4: Joaquin continuo con la programación de la pagina web, y Santiago con búsqueda de sponsors.\\
+17-20/4: Feriado\\
+21/4: Joaquin continuo con el desarrollo de la pagina web\\
+23/4: Joaquin continuo con la pagina web\\
+30/4: Joaquin continuo con la pagina web\\
+
+\subsection*{MAYO}
+7/5: Joaquin continuo con la pagina web\\
+9/5: Joaquin continuo con la programación de la pagina web\\
+Semana del 12/5 a 18/5: Ambos tuvimos una reunion con SIEMENS, leimos la documentación y Joaquin continuo la programación de la pagina web\\
+Semana 19/5 a 25/5: Tuvimos una segunda reunion con SIEMENS para hablar sobre nuestras dudas y Joaquin termino la programación de la pagina web, consiguio un link en Netlify.app y Santiago la subio al Instagram\\
+Semana 26/5 a 1/6: Santiago realizo un diagrama del funcionamiento de las vías y Joaquin añadio un poco de información a la pagina ya que recibimos comentarios de que faltaba información\\
+
+\subsection*{JUNIO}
+Semana 2/6 a 8/6: Esta semana nos dedicamos a preguntarle a distintos profes sobre que componentes usar y a empezar con unas reformas en la pagina web\\
+Semana 9/6 a 15/6: Santiago realizo la lista de materiales y la mando a la empresa, mientras Joaquin siguio con las reformas en la pagina web\\
+Semana 16/6 a 22/6: Joaquin instalo Blender y aprendio a usarlo para poder realizar el modelo 3D de la señalizacion de los cambios de via\\
+Semana 23/6 a 29/6: Joaquin realizo el modelo 3D de la primera señal y la subio al Github como STL\\
+
+\subsection*{JULIO}
+16/7: Tuvimos una reunion sobre los avances del proyecto. Nos sugirieron trabajar durante el receso invernal para ganar tiempo y pedirle los componentes a cooperadora.\\
+18/7: Fuimos a pedir 2 Raspberrys Pi Pico 2W y 2 modulos RF de 433mhz a Cooperadora. Tambien nos prestaron resistencias y LEDs del pañol.\\
+Receso Invernal: Joaquin estuvo haciendo simulaciones en Wokwi, que luego serian probadas en agosto.\\
+
+\subsection*{AGOSTO}
+4/8: Joaquin probo en Wokwi el modulo de comunicacion de tren - via y semaforos con 2 ESP32 y 3 leds.\\
+5/8: Joaquin probo en Wokwi el modulo de sensor de ocupacion de via con un ESP32 y un led\\
+6/8: Joaquin probo en Wokwi el funcionamiento de la señalización ferroviaria con un ESP32, un servo, un boton y 3 leds\\
+8/8: Joaquin actualizo el sensor de ocupacion. Desde cooperadora nos mandaron llas 2 Raspberrys que pedimos. Santiago subio una historia agradeciendole a cooperadora por las Raspberry y Joaquin instalo la configuracion de micropython en vscode para configurar la Raspberry.\\
+11/8: Empezamos a hacer el diagrama eléctrico mientras inicializabamos la Raspberry en VScode.\\
+13/8: A la mañana empezamos el curso de drones. A la tarde visitamos Retiro donde nos dieron una capacitacion y nos permitieron recorrer los andenes que estan en obra.\\
+18/8: Joaquin empezo a preparar el codigo para que funcione el wifi de la Raspberry que ira en la via.\\
+20/8: Este dia, a pesar de tener practicas profesionalizantes, no pudimos hacer nada porque se fue la luz y no pudimos cargar nuestras compus. Este dia tambien llegaron los sensores RF de 433 mhz de parte de cooperadora, entonces fuimos a retirarlos.\\
+21/8: Joaquin termino de hacer el codigo de la raspberry que iria en la locomotora y probamos la comunicacion wifi entre ambas raspberry\\
+27/8: Tuvimos el curso de dron\\
+28/8: Tratamos de probar la raspberrys en fisico pero no tenian las patitas. Joaquin actualizo el codigo entre la Raspberry y la locomotora de la via\\
+
+\subsection*{SEPTIEMBRE}
+1/9: Santiago empezó a hacer un segundo modelo 3D de las señales ferroviarias ya que el primero tenia errores en el modelo\\
+2/9: Santiago continuo con el segundo modelo 3D de las señales\\
+3/9: Tuvimos curso de dron\\
+4/9: Este dia ambos faltamos pero mandamos a imprimir una nota para llevar al Ferroclub Escalada y se la hicimos firmar al vicedirector Arguello\\
+6/9: Este dia, a pesar de ser fin de semana y no tener practicas profesionaliantes, fuimos al Ferroclub Escalada con la nota. Este dia no habiamos llevado los componentes y nos dijeron que debian consultarle a la fundacion del Ferroclub por los materiales, asi que nos pidieron que volvieramos la siguiente semana con los componentes para darles una mejor explicacion de como iban a ir los componentes en el circuito\\
+9/9: Santiago termino el segundo modelo 3D de las señales ferroviarias\\
+10/9: Fuimos al curso de dron\\
+13/9: Este dia volvimos al Ferroclub Escalada junto con los componentes. Les explicamos mejor el funcionamiento del circuito y como iban a ir montados los componentes. Nos dijeron que volvieramos la otra semana con otra nota para que nos den el material, pero nos confirmaron que nos iban a prestar una locomotora y un par de vías\\
+16/9: Hicimos una lista de materiales y fuimos a pedirlos a cooperadora.\\
+17/9: A la mañana estuvimos en el curso de drones. En la tarde Joaquin empezo a realizar el banner y Santiago el primer diseño de la placa en KiCad.\\
+18/9: Joaquin termino de hacer el banner y Santiago continuo con el diseño de la placa en kicad\\
+19/9: Santiago continuo haciendo el diseño de la placa en KiCad y le añadio una base al modelo en 3D\\
+20/9: Santiago volvio al Ferroclub Escalada y le proporcionaron el tren y un par de vias\\
+22/9: Probamos la corriente en las vias que nos proporciono el Ferroclub Escalada\\
+23/9: Santiago soldao las patitas al ESP32 y continuo con el modelo en Kicad\\
+24/9: Santiago finalizo el diseño en Kicad. Tambien, Joaquin empezo a hacer el codigo en una de las compus de la escuela ya que su compu andaba mal. Joaquin estuvo toda la mañana en el aula del profesor Montoni haciendo el codigo. A la tarde, el profesor Garabato nos proporciono mas vias, cambios de via y locomotoras para probar el circuito en fisico. Dedicamos un rato a ver que nos servia y que le podiamos devolver y luego Joaquin eempezo a instalar las librerias necesarias en Thonny y VScode para probar el codigo\\
+25/9: Joaquin trato de probar el codigo del ESP32 en ARDUINO IDE pero no funciono. Tambien empezamos a limpiar las vias que nos dio el profesor Garabato y armamos el circuito para probar la corriente y verificar que el tren andara correctamente sobre las vias.\\
+26/9: Continuamos limpiando las vias con virulana y alcohol. Este dia tambien nos mudamos a la jaula del fondo ya que se nos hacia incomodo armar y desarmar el circuito cada vez que queriamos probarlo, asi que decidimos llevar 2 mesas a la jaula y dejar las vias armadas ahi. Tambien Joaquin trato de probar la comunicacion wifi entre esp32 y raspberry en una de las compus de la jaula pero estas no tenian internet, asi que decidimos tratar de probarla en la comu de Santiago pero ahi tampoco funciono.\\
+30/9: Este dia, Joaquin trato de probar por ultima vez el codigo en su compu con Platformio. El codigo se subio correctamente al esp32 pero al momento de abrir el serial monitor, este tardaba mucho en cargar o no mostraba nada. Finalmente, decidio probar el codigo del ESP32 y el de la Raspberry en Thonny\\
+
+\subsection*{OCTUBRE}
+1/10: A la mañana, pasamos el codigo de la Raspberry a Thonny y como aun no teniamos programada la esp32 para que mandara el estado de las vias, probamos mandandole mensajes desde una app llamada MyMQTT. A la tarde, Joaquin modifico el codigo del ESP32 para que mandara el estado de las vias.\\
+2/10: Joaquin modifico el codigo de ambos componentes para incluir los leds y los sensores RF de 433mhz. Tratamos de probar el circuito en fisico pero nuestro cable no transmitia datos, entonces decidimos que lo probariamos el 7/10. Este dia, Santiago hizo la impresion del primer semaforo en 3D. El modelo 3D tenia una base aparte, asi que luego de imprimirlo en 3D, Santiago lijo y quito todo el sobrante, luego separo la base y la pego con la gotita. Por ultimo, luego de la escuela, fuimos a lo del señor Daniel Raley para conseguir mas vias rectas y otros 2 cambios de via. Nos proporciono un par de vias pero no nos pudo proporcionar los cambios de via que nos faltaban.\\
+6/10: Este dia armamos el circuito para probarlo en fisico, pero nos dimos cuenta de algo importante. Los codigos originales se hicieron para que la Raspberry y la ESP32 se comunicaran por wifi, pero la gracia es que los datos se manden por los sensores de 433mhz. Luego de darnos cuenta de eso, Joaquin empezo a modificar todo el codigo de nuevo. Este dia, Santiago imprimio el segundo semaforo\\
+7/10: Este dia, Santiago imprimio el 3er y 4to semaforo. Joaquin busco las librerias para poder programar los sensores de 433mhz junto con la Raspberry en Thonny. Las librerias que encontro para los sensores no eran compatibles con micropython, entonces le pidio a una IA que le cree una libreria para usar. Luego, empezo a programar nuevamente la ESP32 y la Raspberry con esta libreria. El codigo fue hecho para probar una sola señal\\
+8/10: Este dia, Joaquin termino de programar la Raspberry y la ESP32 y tratamos de probar el circuito en fisico. Al principio no funciono ya que uno de los transmisores estaba dañado, luego lo intercambiamos con otro transmisor y funciono. El transmisor mostraba un estado entre “LIBRE”, “PRECAUCION” y “OCUPADO” en el shell de Thonny con la Raspberry y cambiaba el led dependiendo del estado. La ESP32 captaba este estado con su receptor y lo mostraba en el shell de Thonny que este fue recibido junto con la velocidad simulada.\\
+9/10: Este dia, Joaquin cambio el codigo para que se probaran dos señales en lugar de solo una. Luego empezamos el circuito con un ESP32, una raspberry, 3 TX y 3 Rx en 3 protoboards para probar su funcionamiento pero se nos hizo tarde y no pudimos prrobarlo, asi que lo probamos el dia 13/10\\
+10/10: Este dia Santiago fue a la casa de un vecino a conseguir los cambios de via y vias rectas faltantes.\\
+13/10: Este dia volvimos a armar el circuito en fisico para probarlo. No anduvo correctamente debido a que habia algunos errores en el codigo, mayormente relacionados a la logica de funcionamiento entre los componentes, asi que Joaquin empezo a modificar el codigo nuevamente para respetar esa logica.\\
+14/10: Joaquin continuo modificando el codigo de ambos componentes y Santiago modifico el modelo en blender para que esta vez el modelo tuviera 2 semaforos y se pudieran imprimir mas rápido. Este dia tambien fuimos a cooperadora a solicitar un doble puente h driver l298n y unos pines hembra. Tambien teniamos pensado empezar a imprimir la placa pero este dia no estaba el profesor Fabricio Carlassara, que es el dueño de la fresadora y del software, asi que no pudimos imprimirlas.\\
+15/10: Joaquin termino de armar ambos códigos. A la tarde, quisimos armar el circuito nuevamente, pero la profesora Lara necesitaba los protoboards, asi que probamos el circuito al dia siguiente.\\
+16/10: Este dia armamos el circuito por ultima vez. El codigo parecia funcionar pero se nos quemo la raspberry porque accidentalmente pusimos 10volts en la fuente. Decidimos dejar de armar el circuito en protoboard cada vez que ibamos a probarlo para evitar accidentes como estos y empezar a armar la placa. Tambien, Joaquin a modificar el codigo para poder manejar la esp32 por bluetooth.\\
+17/10: Joaquin continuo modificando el codigo para controlar la esp32(locomotora) por bluetooth, aparte de adquirir la libreria ble\_simple\_peripheral.py que es necesaria para que el esp32 se anuncie como un dispositivo bluetooth. Este dia tambien llego el driver l298 n asi que fuimos a buscarlo a cooperadora.\\
+20/10: A la mañana no pudimos hacer mucho debido a que no habia wifi. A a tarde, Joaquin continuo con el codigo, añadiendole la logica de control del motor e incluyendole el driver l298n\\
+21/10: Este dia, el profesor Fabricio Carlassara nos aconsejo cambiar el diseño en Kicad para hacer modulos de 1 raspberry en vez de tenerlas todas en una sola placa. Santiago modifico el diseño en KiCad y tambien corto la placa de cobre en nueve partes. Mientras tanto, Joaquin se instalo la app nRF connect para mandarle una velocidad aleatoria all esp32 desde la app y verificar que apareciera en el Thonny. Esta app tambien tiene una opcion de lectura que muestra las velocidades aleatorias que genera la esp32 en la app. Tambien instalo la libreria uwebsockets en la raspberry para coordinarla con la pagina web. Santiago rediseño el banner ya que nos parecio que el que hicimos antes quedo obsoleto, además que el anterior estaba en 90x120 px, lo que hacia que fuera muy pequeño, asi que en la segunda version tratamos de que saliera con la mayor calidad posible.\\
+22/10: Santiago imprimio los semaforos 11 y 12 en 3D. Tambien imprimio la primera placa y la dejamos lista para soldar. Este dia tambien enviamos el banner al profesor Palmieri y luego de la escuela fuimos a retirar los pines hembra que compramos.\\
+23/10: Santiago abrio en Blender el modelo 3D de los semaforos normales y tomo sus bases. Luego, las exporto al modelo 3D de los semaforos de cambio de via y se las añadio a ese modelo para poder imprimirlas con el fin de que tengan el mismo soporte que los semaforos normales. Luego fuimos a imprimirlos. Mientras tanto, Joaquin se enfoco en ver ejemplos de años pasados para realizar el manual de usuario, carpeta tecnica y video de presentación de la mejor manera posible. Tambien nos comunicamos con nuestro patrocinador SIEMENS para ver si nos podian proporcionar manuales de usuario para usar de inspiracion.\\
+24/10: Joaquin realizo la carpeta del manual de usuario y empezo a programar el nuevo codigo de la raspberry\\
+27/10: Joaquin continuo realizando el codigo de la raspberry y Santiago modifico el modelo del semaforo del cambio de via. Luego, Santiago imprimio el 13vo y 14vo semaforo en 3D\\
+28/10: Este dia, Santiago imprimio los semaforos 15 y 16. Joaquin continuo el codigo de la raspberry y empezo a armar el texto del manual de usuario\\
+29/10: Este dia fuimos a hacer pasantias a la empresa NEWTON. A la tarde, Joaquin continuo con el codigo de la Raspberry y con el texto del manual de usuario. Santiago armo el tren con el puente H, soldo algunas Raspberrys y lijo los sobrantes de los semaforos que imprimimos\\
+30/10: Este dia, Joaquin termino el manual de usuario del proyecto implementado en un entorno real, pero nos recomendaron cambiarlo para que sea la explicación de la maqueta. Joaquin empezo con el nuevo texto y siguio programando las raspberrys. Mientras tanto, Santiago empezo a grabar tomas para el video presentación\\
+31/10: Joaquin termino e el manual de usuario de la maqueta y ambos grabamos los audios para el video presentación. Santiago hizo todas las placas y se encargo de editar el video.\\
+
+\subsection*{NOVIEMBRE}
+3/11: Santiago agujereo todas las placas e hizo el modelo 3D de la cajita del motor.\\
+4/11: Santiago armo todos los semaforos, con sus leds y sus cables. Joaquin empezo a hacer la carpeta tecnica.\\
+5/11: A la mañana fuimos a NEWTON. A la tarde, Joaquin continuo con la carpeta tecnica y probamos el funcionamiento de la ESP32 y el driver por Bluetooth, observamos que al mandarle un valor se movia un poco y despues se detenia, decidimos cambiar los cables al dia siguiente. Mientras, nos pidieron rehacer el video presentación, asi que Santiago grabo nuevas tomas y se encargo de editar el video.\\
+6/11: Probamos nuevamente el funcionamiento de la ESP32 por Bluetooth. Seguia pasando lo mismo que el dia anterior. Entonces, Joaquin trato de hacer una app por RemoteXY de Arduino, pese a que no le haya funcionado para programar antes. Instalo todas las librerias necesarias y se puso a hacer la app. Mientras, Santiago agujereo mas placas y probo el funcionamiento de uno de los semaforos junto con la Raspberry, que ya tenia el codigo cargado\\
+7/11: A la mañana, Joaquin trato de seguir programando la app en arduino. Mientras, vino el profesor Medina y trato de ayudarnos a ver cual podia ser el problema. Santiago trato de armar nuevamente el circuito junto con el profe, mientras Joaquin le cargaba el codigo antiguo de Thonny al ESP32. Cuando lo probamos nuevamente, Santiago se dio cuenta que habia puesto la corriente de las vias al reves, entonces al invertirlo y mandarle valores por la app nRF connect, anduvo normalmente. Hicimos un par de pruebas mas pero la ESP32 se calento excesivamente. Le preguntamos al profesor Medina cual podria haber sido el problema, y junto con el verificamos que la ESP32 se habia quemado. Decidimos probar el codigo con la otra ESP32 que teníamos pero esta tambien estaba quemada, entonces Santiago pidio 2 ESP32 que llegarian el dia siguiente. Mientras, Santiago siguio armando las placas y los semaforos y Joaquin continuo con la carpeta tecnica y se puso a actualizar la carpeta de campo.\\
+
+\end{document}
