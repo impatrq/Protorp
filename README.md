@@ -4,18 +4,18 @@ PROTORP 🚆
 
 🌟 Objetivo del Proyecto
 
-PROTORP tiene como objetivo principal desarrollar sistemas de seguridad ferroviaria , como ATP (Automatic Train Protection) y ATS (Automatic Train Stop), a escala, para mejorar la eficiencia, seguridad y capacitación en el ámbito ferroviario.
+PROTORP tiene como objetivo principal desarrollar sistemas de seguridad ferroviaria , como ATP (Automatic Train Protection) y ATS (Automatic Train Stop), a escala, para que pueda servir como entrenamiento y capacitacion para quien desee convertirse en señalero o maquinista, para que pueda ver las distintas situaciones que pueden ocurrir en las vias, sin tener que comprometer las formaciones reales ni sufrir accidentes durante el proceso de entrenamiento.
 
 💡 ¿De dónde surgió la idea?
 
-La idea de PROTORP nació de la necesidad de mejorar la seguridad y eficiencia en los sistemas ferroviarios. Inspirados por los desafíos actuales en el transporte, buscamos crear un modelo a escala que permita probar y validar tecnologías avanzadas antes de su implementación en sistemas reales.
+La idea de PROTORP nació de la necesidad de mejorar la seguridad y eficiencia en los sistemas ferroviarios, ademas de servir como capacitacion y entrenamiento, sin comprometer las formaciones reales ni sufrir accidentes, durante el proceso de entrenamiento, evitando costos asociados a refacciones y recuperacion de los afectados.
 
 🛠️ Descripción del Proyecto
 
 Nuestro proyecto incluye:
 - Sistema ATS: Detiene automáticamente el tren si se salta una señal de advertencia.
 - Sistema ATP: Controla la velocidad y la distancia entre trenes para evitar colisiones.
-- Modelo a escala: Incluye señales, cambios de vía y un sistema mímico que simula el funcionamiento real.
+- Modelo a escala: Incluye señales y cambios de vía.
  
 
 ⚙️ Componentes a Utilizar
